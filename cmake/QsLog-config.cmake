@@ -5,11 +5,19 @@ get_filename_component(QsLog_CONFIG_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
 # 设置库头文件的路径
 if(NOT QsLog_INCLUDE_DIRS)
     set(QsLog_INCLUDE_DIRS "${QsLog_CONFIG_DIR}/../include")
+else()
+    message(FATAL_ERROR "The QsLog_INCLUDE_DIRS variable is set multiple times, please check.")
 endif()
 
 # 设置库的路径
 if(NOT QsLog_LIBRARIES)
-    set(QsLog_LIBRARIES "${QsLog_CONFIG_DIR}/../lib/QsLog.lib")
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        set(QsLog_LIBRARIES "${QsLog_CONFIG_DIR}/../lib/QsLog_d.lib")
+    else()
+        set(QsLog_LIBRARIES "${QsLog_CONFIG_DIR}/../lib/QsLog.lib")
+    endif()
+else()
+    message(FATAL_ERROR "The QsLog_LIBRARIES variable is set multiple times, please check.")
 endif()
 
 # 或者如果你的库是动态链接库，可以这样设置

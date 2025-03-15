@@ -7,6 +7,10 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
+set(CMAKE_DEBUG_POSTFIX "_d")
+
+set(QT_MSVC_DIR "D:/SoftWare/Library/QT/6.8.2/msvc2022_64")
+set(CMAKE_PREFIX_PATH ${QT_MSVC_DIR}/lib/cmake)
 find_package(QT NAMES Qt6 Qt5 REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS
     Core
