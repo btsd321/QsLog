@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "array": "cpp",
+        "format": "cpp",
+        "initializer_list": "cpp",
+        "list": "cpp",
+        "utility": "cpp",
+        "vector": "cpp",
+        "xhash": "cpp",
+        "xstring": "cpp",
+        "xtree": "cpp",
+        "xutility": "cpp",
+        "qtglobal": "cpp",
+        "future": "cpp",
+        "system_error": "cpp"
+    }
+}
