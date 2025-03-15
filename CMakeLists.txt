@@ -54,4 +54,5 @@ install(FILES ${INCLUDE_FILES}
     DESTINATION include/QsLog
 )
 install(FILES LICENSE DESTINATION .)
+install(FILES README.md DESTINATION .)
 
