@@ -1,11 +1,16 @@
+
 # QsLogConfig.cmake
 # 这个文件是为QsLog库设置的配置文件
-
+get_filename_component(QsLog_CONFIG_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
 # 设置库头文件的路径
-set(QsLog_INCLUDE_DIRS "include")
+if(NOT QsLog_INCLUDE_DIRS)
+    set(QsLog_INCLUDE_DIRS "${QsLog_CONFIG_DIR}/../include")
+endif()
 
 # 设置库的路径
-set(QsLog_LIBRARIES "lib/QsLog.lib")
+if(NOT QsLog_LIBRARIES)
+    set(QsLog_LIBRARIES "${QsLog_CONFIG_DIR}/../lib/QsLog.lib")
+endif()
 
 # 或者如果你的库是动态链接库，可以这样设置
 # set(QsLog_LIBRARIES "C:/path/to/QsLog/lib/QsLog.dll")
@@ -29,6 +34,6 @@ find_package_handle_standard_args(QsLog
 
 # 提供库的路径变量给外部项目
 if(QsLog_FOUND)
-    get_filename_component(QsLog_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+    get_filename_component(QsLog_DIR "${QsLog_CONFIG_DIR}/../" PATH)
     set(QsLog_FOUND True)
 endif()
