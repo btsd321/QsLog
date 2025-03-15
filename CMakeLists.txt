@@ -61,6 +61,17 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/cmake/ DESTINATION cmake)
 install(FILES ${INCLUDE_FILES}
     DESTINATION include/QsLog
 )
-install(FILES LICENSE DESTINATION .)
-install(FILES README.md DESTINATION .)
+install(CODE [[
+    if(EXISTS README.md)
+        install(FILES README.md DESTINATION .)
+    endif()
+    if(EXISTS LICENSE.txt)
+        install(FILES LICENSE.txt DESTINATION .)
+    endif()
+    if(EXISTS LICENSE)
+        install(FILES LICENSE.txt DESTINATION .)
+    endif()
+]])
+
+
 

@@ -27,7 +27,7 @@ endif()
 include_directories(${QsLog_INCLUDE_DIRS})
 
 # 添加库路径
-link_directories(${QsLog_LIBRARIES})
+link_directories(${QsLog_CONFIG_DIR}/../lib)
 
 # 设置库的版本
 set(QsLog_VERSION 2.0)
