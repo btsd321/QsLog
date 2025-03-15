@@ -1,4 +1,4 @@
-﻿cmake_minimum_required(VERSION 3.28)
+﻿cmake_minimum_required(VERSION 3.20)
 
 project(QsLog)
 
@@ -7,9 +7,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(QT_MSVC_DIR "D:/SoftWare/Library/QT/6.8.2/msvc2022_64")
-set(CMAKE_PREFIX_PATH ${QT_MSVC_DIR}/lib/cmake)
-find_package(QT NAMES Qt6 REQUIRED COMPONENTS     
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS     
     Core
 )
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS
@@ -24,9 +22,17 @@ set(PROJECT_SOURCES
     ${INCLUDE_FILES}
 )
 
-qt6_add_library(${PROJECT_NAME} STATIC
-    ${PROJECT_SOURCES}
-)
+if(QT_VERSION_MAJOR EQUAL 6)
+    qt6_add_library(${PROJECT_NAME} STATIC
+        ${PROJECT_SOURCES}
+    )
+elseif(QT_VERSION_MAJOR EQUAL 5)
+    qt5_add_library(${PROJECT_NAME} STATIC
+        ${PROJECT_SOURCES}
+    )
+else()
+    message(FATAL_ERROR "Unsupported Qt version")
+endif()
 
 target_include_directories(${PROJECT_NAME}
 PUBLIC
